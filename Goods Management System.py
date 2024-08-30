@@ -283,7 +283,7 @@ def window():  # 主窗口
     tk.Button(win, text="查看物品销量", font=("微软雅黑", 10), command=Check).grid(row=1, column=1, padx=25)
     tk.Button(win, text="查询物品信息", font=("微软雅黑", 10), command=Find_window).grid(row=2, column=0, padx=25)
     tk.Button(win, text="更改物品信息", font=("微软雅黑", 10), command=Change).grid(row=2, column=1, padx=25)
-    tk.Button(win, text="显示物品信息", font=("微软雅黑", 10),
+    tk.Button(win, text="排列物品信息", font=("微软雅黑", 10),
               command=lambda: Output(goods)).grid(row=3, column=0, columnspan=2)
     tk.Button(win, text="退出", font=("微软雅黑", 10),
               command=lambda: (win.destroy(), win.quit())).grid(row=4, column=0, columnspan=2)
