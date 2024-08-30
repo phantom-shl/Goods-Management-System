@@ -4,6 +4,7 @@ import tkinter.ttk as ttk
 scrw = 0
 scrh = 0
 word = ""
+s=['名称', '编号', '销量', '价格', '类型', '销量占总量的百分比']
 
 # 定义类存储书本信息
 class Good:
@@ -84,6 +85,7 @@ def Add():
     num_data.grid(row=3, column=1)
     price_data.grid(row=4, column=1)
     ty_data.grid(row=5, column=1)
+    id_data.insert(tk.END, goods[len(goods)-1].id+1)
     tk.Button(add_t, text="完成", command=lambda: Add_t(num_data, id_data, name_data, price_data, ty_data)).grid(
         row=6, columnspan=2)
     tk.Button(add_t, text="退出", command=lambda: (add_t.destroy(), add_t.quit())).grid(row=7, columnspan=2)
@@ -98,21 +100,11 @@ def Output_window(data):
     # 表格
     l = ttk.Treeview(data_list, yscrollcommand=scrollbar.set)
     l['columns'] = ('名称', '编号', '销量', '价格', '类型', '销量占总量的百分比')
-    # 设置列
+    # 设置列和表头
     l.column('#0', width=50, anchor='center')
-    l.column('名称', anchor='center')
-    l.column('编号', anchor='center')
-    l.column('销量', anchor='center')
-    l.column('价格', anchor='center')
-    l.column('类型', anchor='center')
-    l.column('销量占总量的百分比', anchor='center')
-    # 设置表头
-    l.heading('名称', text='名称', anchor='center')
-    l.heading('编号', text='编号', anchor='center')
-    l.heading('销量', text='销量', anchor='center')
-    l.heading('价格', text='价格', anchor='center')
-    l.heading('类型', text='类型', anchor='center')
-    l.heading('销量占总量的百分比', text='销量占总量的百分比', anchor='center')
+    for i in range(0, len(s)):
+        l.column(s[i], anchor='center')
+        l.heading(s[i], text=s[i], anchor='center')
     goods_sum = 0
     for i in goods:
         goods_sum += int(i.num)
